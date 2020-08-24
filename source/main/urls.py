@@ -19,14 +19,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from webapp.views import UserIndexView, register_view, UserDetailView, UserPasswordChangeView
+from webapp.views import UserIndexView, register_view, UserDetailView, UserPasswordChangeView, user_activate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', UserIndexView.as_view(), name='index'),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('create/', register_view, name='register'),
+    path('register/', register_view, name='register'),
+    path('register/activate/', user_activate, name='user_activate'),
     path('profile/<pk>/', UserDetailView.as_view(), name='user_detail'),
     path('profile/<pk>/change-password/', UserPasswordChangeView.as_view(),  name='user_change_password'),
 

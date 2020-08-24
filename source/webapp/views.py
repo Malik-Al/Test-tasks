@@ -1,12 +1,11 @@
 from django.contrib.auth import login
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, UpdateView
-
-from webapp.models import Profile
-from .forms import UserCreationForm, PasswordChangeForm, UserChangeForm
+from main.settings import HOST_NAME
+from webapp.models import Profile, Token
+from .forms import UserCreationForm, PasswordChangeForm
 
 
 class UserIndexView(ListView):
@@ -16,11 +15,36 @@ class UserIndexView(ListView):
 
 
 
-def register_view(request, *args, **kwargs):
+# def register_view(request, *args, **kwargs):
+#     if request.method == 'POST':
+#         form = UserCreationForm(data=request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             user.save()
+#             Profile.objects.create(user=user)
+#             return redirect('index')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'register.html', context={'form': form})
+#
+
+
+
+
+def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
+            user_1 = User(
+                email=form.cleaned_data['email'],
+                is_active=False)
             user = form.save()
+            token = Token.objects.create(user=user)
+            activation_url = HOST_NAME + reverse('user_activate') + '?token={}'.format(token)
+
+            user_1.email_user('Регистрация на сайте localhost',
+                              'Для активаций перейдите по ссылке:{}'.format(activation_url))
             login(request, user)
             user.save()
             Profile.objects.create(user=user)
@@ -28,6 +52,20 @@ def register_view(request, *args, **kwargs):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
+
+
+def user_activate(request):
+    token_value = request.GET.get('token')
+    try:
+        token = Token.objects.get(token=token_value)
+        user = token.user
+        user.is_active = True
+        user.save()
+        token.delete()
+        login(request, user)
+        return redirect('index')
+    except Token.DoesNotExist:
+        return redirect('index')
 
 
 
