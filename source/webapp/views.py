@@ -15,23 +15,6 @@ class UserIndexView(ListView):
 
 
 
-# def register_view(request, *args, **kwargs):
-#     if request.method == 'POST':
-#         form = UserCreationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             user.save()
-#             Profile.objects.create(user=user)
-#             return redirect('index')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'register.html', context={'form': form})
-#
-
-
-
-
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
@@ -52,6 +35,8 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
+
+
 
 
 def user_activate(request):
