@@ -35,6 +35,14 @@ class UserCreationForm(forms.ModelForm):
 
         return self.cleaned_data
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        try:
+            User.objects.get(email=email)
+            raise ValidationError('User with this email already exists',
+                                  code='user_email_exists')
+        except User.DoesNotExist:
+            return email
 
     class Meta:
         model = User
