@@ -8,6 +8,7 @@ password_len = 6
 class UserCreationForm(forms.ModelForm):
     password = forms.CharField(label="Пароль", strip=False, widget=forms.PasswordInput)
     password_confirm = forms.CharField(label="Подтвердите пароль", widget=forms.PasswordInput, strip=False)
+    email = forms.EmailField(label='Email', required=True)
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get("password")
@@ -47,6 +48,47 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'password_confirm', 'first_name', 'last_name', 'email']
+
+
+class UserChangeForm(forms.ModelForm):
+    avatar = forms.ImageField(label='Аватар', required=False)
+    second_name = forms.CharField(label='Отчество', required=False)
+    gender = forms.CharField(label='Пол', required=False)
+    country = forms.CharField(label='Страна', required=False)
+
+    def get_initial_for_field(self, field, field_name):
+        if field_name in self.Meta.profile_fields:
+            return getattr(self.instance.profile, field_name)
+        return super().get_initial_for_field(field, field_name)
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        self.save_profile(commit)
+        return user
+
+    def save_profile(self, commit=True):
+        profile = self.instance.profile
+        for field in self.Meta.profile_fields:
+            setattr(profile, field, self.cleaned_data[field])
+
+        if not profile.avatar:
+            profile.avatar = None
+
+        if commit:
+            profile.save()
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+        profile_fields = ['avatar', 'second_name', 'gender', 'country']
+        labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'Email'}
+
+
+
+
+
+
+
 
 
 class PasswordChangeForm(forms.ModelForm):

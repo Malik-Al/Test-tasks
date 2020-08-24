@@ -1,9 +1,12 @@
 from django.contrib.auth import login
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, UpdateView
-from .forms import UserCreationForm, PasswordChangeForm
+
+from webapp.models import Profile
+from .forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 
 
 class UserIndexView(ListView):
@@ -19,10 +22,15 @@ def register_view(request, *args, **kwargs):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            user.save()
+            Profile.objects.create(user=user)
             return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
+
+
+
 
 
 class UserDetailView(DetailView):
@@ -39,3 +47,6 @@ class UserPasswordChangeView(UpdateView):
 
     def get_success_url(self):
         return reverse('login')
+
+
+
