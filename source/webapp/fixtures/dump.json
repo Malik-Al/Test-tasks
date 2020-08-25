@@ -1,0 +1,237 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$gZafUA8GdV4M$givLTme7mHDgub0t5WIC31+yV6gENla6tA+RKefhrT0=",
+    "last_login": "2020-08-25T00:30:45.865Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-08-24T00:47:27.992Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$gYgX5K1ZWG6d$unvs8AJjUNm+c79dTNwdVTC4m0TyaMJqmY28ywWrl2k=",
+    "last_login": "2020-08-24T09:32:42.147Z",
+    "is_superuser": false,
+    "username": "Malik",
+    "first_name": "Malik",
+    "last_name": "Imenov",
+    "email": "ivaanlev89@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T01:32:52.566Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$MEx7cD3d29la$wIpfh6k9W+4hJFuS6MekWtw5V5yShxwoLafXWW/Rf/o=",
+    "last_login": "2020-08-24T03:23:28.630Z",
+    "is_superuser": false,
+    "username": "Alina",
+    "first_name": "Alina",
+    "last_name": "Imenova",
+    "email": "user66112@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T01:52:02.254Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$ncprmpR9CuVQ$9VrOSzCto7wYr/q5g3gUJ2hotFODWZcLceAVfcvaUgU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Roza",
+    "first_name": "imenova",
+    "last_name": "Imenov12",
+    "email": "Imenov-a@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T04:08:44.718Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$iVCKs6wrjhdZ$hceaECuf9/xVzlVPj4RSHy2UAfgcHehOsVzpmzI3Rr4=",
+    "last_login": "2020-08-24T04:24:15.459Z",
+    "is_superuser": false,
+    "username": "Roza12",
+    "first_name": "Malik121",
+    "last_name": "Imenov 1213",
+    "email": "ivaanl222ev89@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T04:12:23Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$mwq3odPC5Yd0$ct6qPG0HyeCLx9f/ZGzIKVhTbC84UfTiciNHmTDu0ro=",
+    "last_login": "2020-08-24T04:20:15.732Z",
+    "is_superuser": false,
+    "username": "Roza1212",
+    "first_name": "Malik121",
+    "last_name": "Imenov 1213",
+    "email": "ivaa1212nl222ev89@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T04:13:59.402Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$AMe6oVcoAJBJ$J5l333pFXrh4pYYQHxHG/Kye/CbOOw3Ju4+hyl2DvpA=",
+    "last_login": "2020-08-24T08:44:19.447Z",
+    "is_superuser": false,
+    "username": "Vadim",
+    "first_name": "Vadim",
+    "last_name": "Ivanov",
+    "email": "Ivanov-@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-24T08:44:16.931Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 1,
+  "fields": {
+    "user": 6,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 2,
+  "fields": {
+    "user": 5,
+    "avatar": "user_pics/Polaris1.jpg",
+    "second_name": "\u042d\u0440\u0438\u043a\u043e\u0432\u043d\u0430",
+    "gender": "men",
+    "country": "Kyrgyzstan"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 5,
+  "fields": {
+    "user": 3,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 6,
+  "fields": {
+    "user": 4,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.profile",
+  "pk": 7,
+  "fields": {
+    "user": 7,
+    "avatar": "",
+    "second_name": null,
+    "gender": "gender",
+    "country": "country"
+  }
+},
+{
+  "model": "webapp.token",
+  "pk": 1,
+  "fields": {
+    "user": 4,
+    "token": "6eec609c-ab51-460d-b639-93f5f437c363"
+  }
+},
+{
+  "model": "webapp.token",
+  "pk": 2,
+  "fields": {
+    "user": 5,
+    "token": "945a1149-fcab-4301-b6f0-527d587b4e74"
+  }
+},
+{
+  "model": "webapp.token",
+  "pk": 3,
+  "fields": {
+    "user": 6,
+    "token": "4f17679c-bccd-425d-a217-771cd3874611"
+  }
+},
+{
+  "model": "webapp.token",
+  "pk": 4,
+  "fields": {
+    "user": 7,
+    "token": "fd84e9ed-777b-4d92-b935-6b03ddb42c08"
+  }
+}
+]

@@ -14,6 +14,9 @@ class UserIndexView(ListView):
     context_object_name = 'user_obj'
 
 
+class UserSuperView(ListView):
+    template_name = 'superuser.html'
+    context_object_name = 'user_obj'
 
 def register_view(request):
     if request.method == 'POST':
@@ -24,6 +27,8 @@ def register_view(request):
                 is_active=False)
             user = form.save()
             token = Token.objects.create(user=user)
+            user.save()
+            Profile.objects.create(user=user)
             activation_url = HOST_NAME + reverse('user_activate') + '?token={}'.format(token)
 
             user_1.email_user('Регистрация на сайте localhost',
@@ -31,10 +36,12 @@ def register_view(request):
             login(request, user)
             user.save()
             Profile.objects.create(user=user)
+            Profile.objects.all.create(user=user)
             return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
+
 
 
 
@@ -51,8 +58,6 @@ def user_activate(request):
         return redirect('index')
     except Token.DoesNotExist:
         return redirect('index')
-
-
 
 
 

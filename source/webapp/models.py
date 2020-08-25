@@ -5,8 +5,8 @@ from uuid import uuid4
 USER_GENDER_CHOICES = 'gender'
 GENDER_CHOICES = (
     (USER_GENDER_CHOICES, 'Пол'),
-    ('girl', 'Мужской'),
-    ('men', 'Женский')
+    ('men', 'Мужской'),
+    ('girl', 'Женский')
 )
 
 

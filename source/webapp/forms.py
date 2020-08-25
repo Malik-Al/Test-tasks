@@ -1,14 +1,17 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
+from webapp.models import Profile
 
 password_len = 6
+
 
 
 class UserCreationForm(forms.ModelForm):
     password = forms.CharField(label="Пароль", strip=False, widget=forms.PasswordInput)
     password_confirm = forms.CharField(label="Подтвердите пароль", widget=forms.PasswordInput, strip=False)
     email = forms.EmailField(label='Email', required=True)
+
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get("password")
