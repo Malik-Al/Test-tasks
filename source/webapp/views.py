@@ -14,10 +14,6 @@ class UserIndexView(ListView):
     context_object_name = 'user_obj'
 
 
-class UserSuperView(ListView):
-    template_name = 'superuser.html'
-    context_object_name = 'user_obj'
-
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
